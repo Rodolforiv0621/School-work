@@ -17,3 +17,21 @@
     (else (+ 1 (count-items(cdr x))))
     )
   )
+
+(define (list-item-n x n)
+  (cond
+    ((eq? 0 n) (car x))
+    (else (list-item-n (cdr x) (- n 1)))
+  ))
+
+(define (list-minus-item-n x n)
+  (cond
+    ((eq? 0 n) (cdr x))
+    (else (cons (car x) (list-minus-item-n (cdr x) (- n 1))))
+    ))
+
+(define (rotate-right-1 x)
+  (cond
+    ((empty? (cdr x)) (cons x (rotate-right-1 (cdr x))))
+    ))
+  
