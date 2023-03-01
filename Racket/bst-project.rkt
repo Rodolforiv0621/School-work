@@ -9,3 +9,33 @@
 ;------------------------
 ;manually constructed tree for testing
 ;------------------------
+
+(define b1 (bst null))
+
+
+(define (nl-to-vl x)
+  (cond
+    ((empty? x) '())
+    (else (cons (node-value (car x)) (nl-to-vl (cdr x))))
+    ))
+
+
+(define (find t v)
+  (cond
+    ((empty? (bst-root t)) null)
+    (else (find-node (bst-root t) v null))
+    ))
+
+(define (find-node n v stack)
+  (cond
+    ((empty? n) stack)
+    ((= v (node-value n)) (cons n stack))
+    ((< v (node-value n)) (find-node (node-left n) v (cons n stack)))
+    (else (find-node (node-right n) v (cons n stack)))
+    ))
+
+(define (insert t v)
+  (cond
+    ((empty? (bst-root t)) (set-bst-root! t (node v 1 '() '())))
+    (else (insert-node (bst-root t) v))
+    ))
