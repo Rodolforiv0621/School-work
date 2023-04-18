@@ -28,7 +28,9 @@ class project1{
                 theData[i][j] = sc.nextInt();
             }
         }
-        
+        System.out.println(theData[cleoX][cleoY]);
+        q.add(theData[2][3]);
+        System.out.println(q.peek());
     }
     
 }
