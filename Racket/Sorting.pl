@@ -84,17 +84,17 @@ split(L,L1,L2):-
     LH is LL//2,
     length(L1,LH).
 
-merges(L1,L2,M):-
-    L1 = [L1H|L1T],
-    L2 = [L2H|L2T],
-    (   L1H =< L2H
-    ->  merges(L1T,L2,TEMP),M=[L1H|TEMP]
-    ;   merges(L1,L2T,TEMP),M=[L2H|TEMP]
-    ).
+%merge(L1,L2,M):-
+%    L1 = [L1H|L1T],
+%    L2 = [L2H|L2T],
+%    (   L1H =< L2H
+%    ->  merge(L1T,L2,TEMP),M=[L1H|TEMP]
+%    ;   merge(L1,L2T,TEMP),M=[L2H|TEMP]
+%    ).
 
 merge_sort([X],[X]).
 merge_sort(L,M):-
     split(L,L1,L2),
     merge_sort(L1,L1S),
     merge_sort(L2,L2S),
-    merges(L1S,L2S,M).
+    merge(L1S,L2S,M).
