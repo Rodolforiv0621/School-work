@@ -80,7 +80,7 @@ merges(L1,L2,M):-
     L2 = [L2H|L2T],
     (   L1H =< L2H
     ->  merges(L1T,L2,TEMP),M=[L1H|TEMP]
-    ;   merges(L2T,L1,TEMP),M=[L2H|TEMP]
+    ;   merges(L1,L2T,TEMP),M=[L2H|TEMP]
     ).
 
 merge_sort([X],[X]).

@@ -1,7 +1,7 @@
+%Rodolfo Rivera
 %------------------------------------
 % Prolog Sorting Programming Project: selection sort and merge sort
 %------------------------------------
-
 
 %--------------------------------------
 % support predicates rv/2, rl/3, is_sorted/1
@@ -21,13 +21,6 @@ rl(1,R,L):-
     rv(R,X),
     L = [X].
 
-swap(L,A,B,M):-
-    nth0(A,L,AV),
-    nth0(B,L,BV),
-    nth0(A,L,_,R1),
-    nth0(A,R2,BV,R1),
-    nth0(B,R2,_,R3),
-    nth0(B,M,AV,R3).
 is_sorted([_]).
 is_sorted(L) :-
     length(L,LL),
@@ -35,6 +28,10 @@ is_sorted(L) :-
     L = [L1,L2|T],
     L1 =< L2,
     is_sorted([L2|T]).
+
+%---------------------------------------
+% Selection Sort Predicates: swap/4, min_index/3, selection_sort/2
+%---------------------------------------
 
 min_index(L,S,MI):-
     length(L, LL),
@@ -50,6 +47,14 @@ min_index(L,CM,C,E,MI):-
     ;   min_index(L,CM,CP,E,MI)
     ).
 min_index(_,CM,E,E,CM).
+
+swap(L,A,B,M):-
+    nth0(A,L,AV),
+    nth0(B,L,BV),
+    nth0(A,L,_,R1),
+    nth0(A,R2,BV,R1),
+    nth0(B,R2,_,R3),
+    nth0(B,M,AV,R3).
 
 selection_sort(L,M):-
     length(L,LL),
@@ -68,6 +73,10 @@ selection_sort(L,S,E,M):-
 selection_sort(L,S,E,M):-
     S>E,
     M=L.
+
+%---------------------------------------
+% Merge Sort Predicates: split/3, merge/3, merge_sort/2
+%----------------------------------------
 
 split(L,L1,L2):-
     append(L1,L2,L),
