@@ -4,6 +4,7 @@ nc(V,P,D):-
     D =\= abs(V-H),
     DP1 is D+1,
     nc(V,T,DP1).
+
 nc(_,[],_).
 
 solve(N,QP):-
