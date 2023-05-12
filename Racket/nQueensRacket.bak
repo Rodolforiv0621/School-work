@@ -1,0 +1,14 @@
+#lang racket
+(define(nc-1 a b d)
+  (and (not (= a b))
+       (not (= d (abs(- a b))))))
+
+(define (nc v p)
+  (nc-h v p 1))
+
+(define (nc-h v p d)
+  (cond)
+  ((empty? p) #t)
+  (else (and (nc-1 v (car p) d)
+             (nc-h v (cdr p) (+ d 1)))))
+
